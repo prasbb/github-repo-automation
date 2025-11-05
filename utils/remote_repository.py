@@ -1,6 +1,7 @@
 import os 
 import requests
 import sys
+from utils import create_local_repository
 
 def create_repository(name: str, private: bool = False, description: str  = "default description") -> None: 
     token = os.getenv("GITHUB_TOKEN")
@@ -13,5 +14,7 @@ def create_repository(name: str, private: bool = False, description: str  = "def
     response = requests.post(url, headers=headers, json=payload)
     if response.status_code == 201:
         print("Repository successfully created.")
+        repo_url = response.json()["clone_url"]
+        create_local_repository(name, repo_url)
     else:
          print(f"Failed to create repository with state code {response.status_code}: {response.text}")
