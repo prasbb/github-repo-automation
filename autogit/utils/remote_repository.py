@@ -3,6 +3,9 @@ import requests
 import sys
 from pathlib import Path
 from autogit.utils.local_repository import create_local_repository
+from dotenv import load_dotenv
+
+load_dotenv()
 
 def create_repository(name: str, private: bool = False, description: str  = "default description") -> None: 
     token = os.getenv("GITHUB_TOKEN")
