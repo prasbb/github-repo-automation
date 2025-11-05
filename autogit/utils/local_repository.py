@@ -1,5 +1,8 @@
 import subprocess
 from pathlib import Path
+import sys
+from pathlib import Path
+sys.path.append(str(Path(__file__).parent))
 
 def create_local_repository(name: str, remote_url: str) -> None: 
     directory = Path(name)

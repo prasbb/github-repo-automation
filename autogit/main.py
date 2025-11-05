@@ -1,6 +1,6 @@
 import argparse 
 
-from utils import create_repository
+from autogit.utils.remote_repository import create_repository
 
 def main(): 
     parser = argparse.ArgumentParser(description="Create GitHub repositories from the command line.")
@@ -9,3 +9,7 @@ def main():
     parser.add_argument("--private", action="store_true", help="Sets repository to be private")
     args = parser.parse_args()
     create_repository(args.name, args.private, args.description)
+
+if __name__ == "__main__":
+    main()
+    

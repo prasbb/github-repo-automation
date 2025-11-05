@@ -1,12 +1,13 @@
 import os 
 import requests
 import sys
-from utils import create_local_repository
+from pathlib import Path
+from autogit.utils.local_repository import create_local_repository
 
 def create_repository(name: str, private: bool = False, description: str  = "default description") -> None: 
     token = os.getenv("GITHUB_TOKEN")
     if not token:
-        print("Missing token in env.")
+        print("Missing token in .env")
         sys.exit(1)
     url = "https://api.github.com/user/repos"
     headers = {"Authorization": f"token {token}"}
